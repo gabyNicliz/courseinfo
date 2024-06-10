@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+const Part = (props) => {
+  return (
+    <div>
+      <p>
+        {props.part} {props.exercises}
+      </p>
+    </div>
+  );
+};
 
-function App() {
-  const [count, setCount] = useState(0)
+const Header = (props) => {
+  return (
+    <div>
+      <h1>{props.course}</h1>
+    </div>
+  );
+};
+
+const Content = (props) => {
+  return (
+    <div>
+      <Part part={props.parts[0].partName} exercises={props.parts[0].exercisesCount}/>
+      <Part part={props.parts[1].partName} exercises={props.parts[1].exercisesCount}/>
+      <Part part={props.parts[2].partName} exercises={props.parts[2].exercisesCount}/>
+    </div>
+  );
+};
+
+const Total = (props) => {
+  return (
+    <div>
+      <p>Number of exercises {props.total}</p>
+    </div>
+  );
+};
+
+const App = () => {
+  const course = 'Half Stack application development';
+  const parts = [
+    { partName: 'Fundamentals of React', exercisesCount: 10},
+    { partName: 'Using props to pass data', exercisesCount: 7},
+    { partName: 'State of a component', exercisesCount: 14}
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <Header course={course}/>
+      <Content parts={parts}/>
+      <Total 
+        total={parts[0].exercisesCount + parts[1].exercisesCount + parts[2].exercisesCount}
+      />
+    </div>
+  );
+};
 
-export default App
+export default App;
