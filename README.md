@@ -8,3 +8,11 @@ Aplication will be developed through the course
 
 ## 1.2: Course Information, step 2
 * Refactor Content component to make it more readable
+
+## 1.3: Course Information step 3
+* Refactor code and create partX objects containing the course's part name and exercise count
+
+## 1.4: Course Information step 4
+* Place the part objects into a single array
+
+## 1.5: Course Information step 5
